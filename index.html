@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navikara Mobilitas Nusantara - Jasa Sewa Truk Tronton Terpercaya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(15,23,42,.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.2);
+    }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .logo {
+      font-weight: 900; font-size: 1.15rem; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .logo-icon {
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      color: #fff; width: 38px; height: 38px;
+      border-radius: 10px; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 900;
+    }
+    .logo-text { line-height: 1.15; }
+    .logo-text small { display: block; font-size: .65rem; font-weight: 600; color: #94a3b8; letter-spacing: .04em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a {
+      font-weight: 600; font-size: .9rem; color: #cbd5e1;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #f97316; }
+    .nav-cta {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff !important;
+      padding: 10px 22px; border-radius: 10px;
+      font-weight: 700; transition: transform .15s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(249,115,22,.35); }
+
+    .hamburger { display: none; background: none; border: none; cursor: pointer; }
+    .hamburger span {
+      display: block; width: 24px; height: 3px;
+      background: #fff; margin: 5px 0; border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      margin-top: 66px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      color: #fff;
+      padding: 90px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1400&q=70') center/cover no-repeat;
+      opacity: .12;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, #f8fafc, transparent);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(249,115,22,.15); border: 1px solid rgba(249,115,22,.3);
+      color: #fb923c; padding: 6px 18px; border-radius: 20px;
+      font-size: .82rem; font-weight: 700; margin-bottom: 20px;
+      letter-spacing: .03em;
+    }
+    .hero h1 { font-size: 2.9rem; font-weight: 900; margin-bottom: 18px; line-height: 1.15; }
+    .hero h1 span { color: #fb923c; }
+    .hero p { font-size: 1.15rem; color: #94a3b8; margin-bottom: 36px; max-width: 620px; margin-left: auto; margin-right: auto; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 34px; border-radius: 12px;
+      font-weight: 700; font-size: 1rem;
+      transition: transform .15s, box-shadow .2s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .btn-primary { background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; }
+    .btn-wa-green { background: #25d366; color: #fff; }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.25); }
+
+    /* ── Section Commons ── */
+    .section { padding: 80px 24px; }
+    .section-title {
+      text-align: center; font-size: 2.1rem; font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center; color: #64748b; max-width: 600px;
+      margin: 0 auto 52px; font-size: 1.05rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: #fff;
+      padding: 40px 24px;
+      box-shadow: 0 -4px 30px rgba(0,0,0,.05);
+      position: relative; z-index: 3;
+    }
+    .stats-grid {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; text-align: center;
+    }
+    .stat-item h3 { font-size: 2rem; font-weight: 900; color: #f97316; }
+    .stat-item p { font-size: .85rem; color: #64748b; font-weight: 600; }
+
+    /* ── Keunggulan ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: #fff; border-radius: 16px;
+      padding: 32px 24px; text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      border: 1px solid #f1f5f9;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+    .feature-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 1.8rem;
+    }
+    .feature-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .feature-card p { font-size: .88rem; color: #64748b; }
+
+    /* ── Katalog Truk ── */
+    #katalog { background: #fff; }
+    .truck-showcase {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+      margin-bottom: 56px;
+    }
+    .truck-showcase-img {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+    }
+    .truck-showcase-img img {
+      width: 100%; height: 380px; object-fit: cover;
+    }
+    .truck-showcase-info h3 {
+      font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;
+    }
+    .truck-showcase-info .truck-type-badge {
+      display: inline-block;
+      background: #dc2626; color: #fff;
+      padding: 4px 14px; border-radius: 6px;
+      font-size: .8rem; font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .truck-showcase-info p {
+      color: #64748b; font-size: .95rem; margin-bottom: 20px;
+    }
+    .truck-spec-list { list-style: none; margin-bottom: 24px; }
+    .truck-spec-list li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; font-size: .92rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .truck-spec-list li span:first-child { font-size: 1.1rem; }
+
+    /* ── Price Routes ── */
+    #harga { background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; }
+    #harga .section-title { color: #fff; }
+    #harga .section-subtitle { color: #94a3b8; }
+
+    .route-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 20px; max-width: 1000px; margin: 0 auto;
+    }
+    .route-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .2s, transform .2s;
+    }
+    .route-card:hover {
+      background: rgba(255,255,255,.1);
+      transform: translateY(-2px);
+    }
+    .route-left { display: flex; align-items: center; gap: 16px; }
+    .route-icon {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .route-city { font-weight: 700; font-size: 1.05rem; }
+    .route-desc { font-size: .78rem; color: #94a3b8; margin-top: 2px; }
+    .route-price {
+      text-align: right;
+    }
+    .route-price .price-val {
+      font-size: 1.2rem; font-weight: 800; color: #fbbf24;
+    }
+    .route-price .price-unit {
+      font-size: .72rem; color: #94a3b8; display: block;
+    }
+
+    .price-note-box {
+      max-width: 700px; margin: 40px auto 0;
+      background: rgba(251,191,36,.08);
+      border: 1px solid rgba(251,191,36,.2);
+      border-radius: 12px; padding: 20px 24px;
+      font-size: .88rem; color: #fde68a;
+      text-align: center;
+    }
+
+    /* ── Cara Pesan ── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 32px;
+    }
+    .step-card { text-align: center; }
+    .step-number {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.4rem;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 14px rgba(249,115,22,.3);
+    }
+    .step-card h3 { margin-bottom: 6px; font-size: 1.05rem; }
+    .step-card p { font-size: .88rem; color: #64748b; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #f97316, #dc2626);
+      color: #fff;
+      padding: 72px 24px; text-align: center;
+    }
+    .cta-section h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 12px; }
+    .cta-section p { font-size: 1.1rem; margin-bottom: 32px; opacity: .9; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-wa-big {
+      background: #25d366; color: #fff;
+      padding: 18px 42px; font-size: 1.15rem;
+      border-radius: 14px; font-weight: 800;
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: background .2s, transform .15s;
+      border: none; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(37,211,102,.35);
+    }
+    .btn-wa-big:hover { background: #1da851; transform: translateY(-2px); }
+    .btn-wa-big svg { width: 26px; height: 26px; fill: #fff; }
+
+    .cta-phone {
+      margin-top: 20px; font-size: 1.1rem; font-weight: 700;
+    }
+    .cta-phone a { color: #fff; border-bottom: 2px solid rgba(255,255,255,.4); }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f172a; color: #94a3b8;
+      padding: 52px 24px 28px;
+    }
+    .footer-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand-name { color: #fff; font-weight: 900; font-size: 1.15rem; margin-bottom: 10px; }
+    .footer-col h4 { color: #fff; font-weight: 700; margin-bottom: 12px; font-size: .95rem; }
+    .footer-col p, .footer-col a { font-size: .88rem; color: #94a3b8; display: block; margin-bottom: 6px; }
+    .footer-col a:hover { color: #f97316; }
+    .footer-bottom {
+      max-width: 1000px; margin: 32px auto 0;
+      padding-top: 20px; border-top: 1px solid #1e293b;
+      text-align: center; font-size: .78rem; color: #475569;
+    }
+
+    /* ── Floating WA ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 62px; height: 62px;
+      background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      z-index: 99; transition: transform .2s;
+      animation: waPulse 2s infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); animation: none; }
+    .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.45); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,.7); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .hero h1 { font-size: 1.9rem; }
+      .hero { padding: 70px 20px 80px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .truck-showcase { grid-template-columns: 1fr; gap: 28px; }
+      .truck-showcase-img img { height: 260px; }
+      .route-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .hero h1 { font-size: 1.6rem; }
+      .stat-item h3 { font-size: 1.5rem; }
+    }
+
+    /* Mobile nav */
+    .nav-links.show {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 66px; left: 0; right: 0;
+      background: #0f172a;
+      padding: 20px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="logo">
+      <div class="logo-icon">N</div>
+      <div class="logo-text">
+        Navikara
+        <small>Mobilitas Nusantara</small>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#katalog">Armada</a></li>
+      <li><a href="#harga">Rute & Harga</a></li>
+      <li><a href="#cara-pesan">Cara Pesan</a></li>
+      <li><a href="#kontak" class="nav-cta">Hubungi Kami</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🚛 Melayani Pengiriman Seluruh Indonesia</div>
+    <h1>Jasa Sewa <span>Truk Tronton</span> Antar Kota Terpercaya</h1>
+    <p>Pengiriman barang antar kota dengan armada Tronton 10 Roda. Harga kompetitif, pengiriman tepat waktu, barang aman sampai tujuan.</p>
+    <div class="hero-buttons">
+      <a href="#harga" class="btn btn-primary">📋 Lihat Rute & Harga</a>
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20ingin%20sewa%20truk%20tronton.%20Bisa%20info%20lebih%20lanjut?" class="btn btn-wa-green">💬 Chat WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ STATS ════ -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <h3>9+</h3>
+      <p>Rute Pengiriman</p>
+    </div>
+    <div class="stat-item">
+      <h3>10</h3>
+      <p>Roda (Tronton)</p>
+    </div>
+    <div class="stat-item">
+      <h3>24/7</h3>
+      <p>Layanan Siap</p>
+    </div>
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>Aman & Terjamin</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ KEUNGGULAN ════ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Mengapa Pilih Navikara?</h2>
+    <p class="section-subtitle">Kami menyediakan layanan pengiriman barang dengan truk tronton yang aman, tepat waktu, dan harga transparan.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Harga Transparan</h3>
+        <p>Harga jelas per rute, tidak ada biaya tersembunyi. Langsung deal, langsung jalan.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚛</div>
+        <h3>Armada Tronton 10 Roda</h3>
+        <p>Truk tronton terawat dan siap mengangkut muatan besar antar kota di seluruh Indonesia.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>Tepat Waktu</h3>
+        <p>Komitmen pengiriman sesuai jadwal yang disepakati. Kami menghargai waktu bisnis Anda.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Aman & Terjamin</h3>
+        <p>Sopir profesional berpengalaman. Barang Anda aman selama perjalanan hingga sampai tujuan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ KATALOG ARMADA ════ -->
+<section class="section" id="katalog">
+  <div class="container">
+    <h2 class="section-title">Armada Kami</h2>
+    <p class="section-subtitle">Truk Tronton 10 Roda siap melayani pengiriman barang Anda ke seluruh Indonesia.</p>
+
+    <div class="truck-showcase">
+      <div class="truck-showcase-img">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80" alt="Truk Tronton 10 Roda" />
+      </div>
+      <div class="truck-showcase-info">
+        <span class="truck-type-badge">TRONTON 10WH</span>
+        <h3>Truk Tronton 10 Roda</h3>
+        <p>Kendaraan angkut berat untuk pengiriman barang dalam jumlah besar, ideal untuk kebutuhan logistik dan ekspedisi antar kota.</p>
+        <ul class="truck-spec-list">
+          <li><span>🔧</span> Tipe: Tronton 10 Wheeler (10WH)</li>
+          <li><span>📦</span> Kapasitas muatan besar</li>
+          <li><span>🛣️</span> Melayani rute antar kota & antar pulau</li>
+          <li><span>👨‍✈️</span> Termasuk sopir berpengalaman</li>
+          <li><span>📍</span> Base: Rancaekek, Bandung</li>
+        </ul>
+        <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20ingin%20tanya%20tentang%20Truk%20Tronton%2010%20Roda" class="btn btn-primary">💬 Tanya via WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Additional truck images -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px;">
+      <div style="border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08);">
+        <img src="https://images.unsplash.com/photo-1586191582056-3f3c6bfb7d0e?w=600&q=75" alt="Truk Tronton tampak samping" style="width:100%; height:200px; object-fit:cover;" />
+        <div style="padding:16px; background:#fff;">
+          <div style="font-weight:700; font-size:.95rem;">Tronton - Bak Terbuka</div>
+          <div style="font-size:.82rem; color:#64748b;">Ideal untuk material bangunan & barang besar</div>
+        </div>
+      </div>
+      <div style="border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08);">
+        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&q=75" alt="Truk Tronton Box" style="width:100%; height:200px; object-fit:cover;" />
+        <div style="padding:16px; background:#fff;">
+          <div style="font-weight:700; font-size:.95rem;">Tronton - Box Tertutup</div>
+          <div style="font-size:.82rem; color:#64748b;">Untuk barang yang butuh perlindungan ekstra</div>
+        </div>
+      </div>
+      <div style="border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08);">
+        <img src="https://images.unsplash.com/photo-1562674319-1fe3b35bc1e0?w=600&q=75" alt="Truk Tronton Flatbed" style="width:100%; height:200px; object-fit:cover;" />
+        <div style="padding:16px; background:#fff;">
+          <div style="font-weight:700; font-size:.95rem;">Tronton - Flatbed</div>
+          <div style="font-size:.82rem; color:#64748b;">Cocok untuk mesin, kontainer & muatan oversize</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ RUTE & HARGA ════ -->
+<section class="section" id="harga">
+  <div class="container">
+    <h2 class="section-title">Rute & Harga Pengiriman</h2>
+    <p class="section-subtitle">Harga sewa Truk Tronton (10WH) per 1× jalan dari Bandung / Rancaekek ke kota tujuan.</p>
+
+    <div class="route-grid">
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20JABODETABEK%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Jabodetabek</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 3.325.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20CILEGON%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Cilegon</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 4.275.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20BANDUNG%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Bandung</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 5.225.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20CIREBON%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Cirebon</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 5.225.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20YOGYAKARTA%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Yogyakarta</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 9.576.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20JAMBI%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Jambi</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 21.090.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20BENGKULU%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Bengkulu</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 22.230.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20DENPASAR%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Denpasar</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 22.800.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20mau%20kirim%20barang%20ke%20PANGKAL%20PINANG%20pakai%20Tronton.%20Bisa%20info?" class="route-card">
+        <div class="route-left">
+          <div class="route-icon">📍</div>
+          <div>
+            <div class="route-city">Pangkal Pinang</div>
+            <div class="route-desc">TRONTON (10WH)</div>
+          </div>
+        </div>
+        <div class="route-price">
+          <span class="price-val">Rp 26.790.000</span>
+          <span class="price-unit">/ 1× jalan</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="price-note-box">
+      💡 Harga bisa berubah sewaktu-waktu. Untuk rute lain yang tidak tercantum, silakan hubungi kami langsung via WhatsApp untuk penawaran terbaik.
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ CARA PESAN ════ -->
+<section class="section" id="cara-pesan">
+  <div class="container">
+    <h2 class="section-title">Cara Pemesanan</h2>
+    <p class="section-subtitle">Pesan truk tronton Navikara hanya dalam 4 langkah mudah.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Pilih Rute Tujuan</h3>
+        <p>Tentukan kota tujuan pengiriman barang Anda dari daftar rute kami.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Hubungi via WhatsApp</h3>
+        <p>Klik tombol rute atau chat langsung ke nomor 0818-866-600.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Konfirmasi & Pembayaran</h3>
+        <p>Sepakati jadwal, detail muatan, dan lakukan pembayaran.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Barang Diantar</h3>
+        <p>Truk kami jemput barang dan antar sampai tujuan dengan aman!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA ════ -->
+<section class="cta-section" id="kontak">
+  <h2>Siap Kirim Barang Anda?</h2>
+  <p>Hubungi Navikara sekarang untuk pemesanan cepat dan konsultasi gratis!</p>
+  <a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20ingin%20sewa%20truk%20tronton.%20Bisa%20info%20lebih%20lanjut?" class="btn-wa-big">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat WhatsApp Sekarang
+  </a>
+  <div class="cta-phone">📞 <a href="tel:0818866600">0818-866-600</a></div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-brand-name">🚛 Navikara Mobilitas Nusantara</div>
+      <p>Jasa sewa truk tronton terpercaya untuk pengiriman barang antar kota di seluruh Indonesia. Aman, tepat waktu, harga bersahabat.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <a href="#katalog">Armada</a>
+      <a href="#harga">Rute & Harga</a>
+      <a href="#cara-pesan">Cara Pesan</a>
+      <a href="#kontak">Hubungi Kami</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <p>📞 0818-866-600</p>
+      <p>📍 Komp. Grand Mulya Asri Blok B44<br/>Jl. Rancakendal Dua, Rancaekek</p>
+      <a href="https://wa.me/62818866600">💬 WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Navikara Mobilitas Nusantara. Semua Hak Dilindungi.
+  </div>
+</footer>
+
+<!-- ════ FLOATING WHATSAPP ════ -->
+<a href="https://wa.me/62818866600?text=Halo%20Navikara,%20saya%20ingin%20tanya%20tentang%20sewa%20truk" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
